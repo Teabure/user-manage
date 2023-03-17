@@ -10,6 +10,7 @@ import com.example.backend.mapper.UndoLogMapper;
 import com.example.backend.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -35,6 +36,7 @@ public class UndoLogServiceImpl extends ServiceImpl<UndoLogMapper, UndoLog>
         this.userService = userService;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Boolean undo(String ip) {
         LambdaQueryWrapper<UndoLog> queryWrapper = Wrappers.lambdaQuery(UndoLog.class);

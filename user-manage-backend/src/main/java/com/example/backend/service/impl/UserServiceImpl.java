@@ -15,6 +15,7 @@ import com.example.backend.service.UserService;
 import com.example.backend.utils.IpUtils;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
@@ -67,6 +68,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         return getById(id);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Boolean addUser(User user, HttpServletRequest request) {
         boolean success = save(user);
@@ -82,6 +84,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         return success;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Boolean updateUser(User user, HttpServletRequest request) {
         User originUser = getById(user.getId());
@@ -98,6 +101,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         return success;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Boolean removeUser(Long id, HttpServletRequest request) {
         User user = getById(id);
@@ -124,6 +128,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         return userMapper.deleteUser(id);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Boolean removeUserBatch(List<String> ids, HttpServletRequest request) {
         boolean success = removeBatchByIds(ids);
