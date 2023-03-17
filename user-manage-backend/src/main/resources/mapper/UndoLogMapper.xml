@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.backend.mapper.UndoLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.backend.domain.UndoLog">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="userHost" column="user_host" jdbcType="OTHER"/>
+            <result property="rowId" column="row_id" jdbcType="BIGINT"/>
+            <result property="action" column="action" jdbcType="OTHER"/>
+            <result property="data" column="data" jdbcType="OTHER"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="columnName" column="column_name" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_host,row_id,
+        action,data,create_time,
+        column_name
+    </sql>
+</mapper>

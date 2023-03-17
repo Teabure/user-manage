@@ -1,0 +1,20 @@
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix: t_
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+spring:
+  datasource:
+    url: jdbc:sqlite::resource:static/sqlite/user_manage_db.db
+#    url: jdbc:sqlite://E:/Code/Java/user-manage-backend/user_manage_db.db
+    driver-class-name: org.sqlite.JDBC
+    username:
+    password:
+
+server:
+  port: 8080
